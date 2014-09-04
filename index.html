@@ -1,5 +1,5 @@
 <meta charset=utf-8>
-<!--h1>CSS slider generator</h1-->
+<h1>CSS slider generator</h1>
 <h2>Slides edition</h2>
 <button onclick='localStorage["cssslide2"]=T.innerHTML'>Save</button>
 <button onclick='T.innerHTML=localStorage["cssslide2"]'>Load</button>
@@ -14,32 +14,26 @@
 </table>
 <br>
 <h2>Result</h2>
-<button onclick='r.className?r.className="":r.className="hidden"'>Toggle</button>
 <button onclick='refresh()'>Refresh</button>
 <br>
 <br>
-<div id=r class=hidden>
-  <textarea rows=20 cols=99 id=a></textarea>
-  <iframe id=f></iframe>
+<textarea rows=20 cols=99 id=a></textarea>
+<iframe id=f></iframe>
 </div>
 <script>
 plus=function(e){e.parentNode.outerHTML+='<th><textarea onkeyup=update(this)>Hi</textarea><br><button onclick=minus(this)>X</button>'+e.parentNode.outerHTML}
-
 minus=function(e){e.parentNode.nextSibling.remove();e.parentNode.remove()}
-
-//upd=function(e){e.innerHTML=e.value.replace(/&lt;/g,"&amp;lt;")}
-
+upd=function(e){e.innerHTML=e.value.replace(/&lt;/g,"&amp;lt;").replace(/&amp;/g,"&amp;amp;")}
 refresh=function(){
 a.value="<meta charset=utf-8>\n\n<style>\n*{box-sizing:border-box;-moz-box-sizing:border-box;margin:0;padding:0}\nbody{overflow:hidden;height:100%;margin:0;counter-reset:c;font-size:2vw}\nsection{width:100vw;height:100vh;left:-100vw;text-align:center;position:fixed;overflow-y:auto;overflow-x:hidden;transition:left 1s}\nsection:after{counter-increment:c;content:counter(c);position:fixed;bottom:1em;right:1em}\n:target{left:0}\n:target~*{left:100vw}\nsection>div{display:table;width:100vw;height:100%}\nsection>div>div{display:table-cell;width:100vw;vertical-align:middle}\nsection>a{text-decoration:none;position:fixed;top:50%}\n.←{left:1em}\n.→{right:1em}\n:not(:target):after,#slide0:after{opacity:0}\n:not(:target)>a{display:none}\n</style>\n\n<script>onload=function(){location.hash='slide0'}<\/script>";
 for(i=0;i<(t=document.querySelectorAll("table textarea")).length;i++){a.value += "\n\n<section id=slide"+i+">"+(i?"\n<a class=← href=#slide"+(i-1)+">&larr;</a>":"")+"<div><div>\n"+t[i].value+"\n</div></div>"+(i<t.length-1?"\n<a class=→ href=#slide"+(i+1)+">&rarr;</a>":"")+"</section>"}
 f.src="data:text/html;,"+escape(a.value.replace(/←/g,"tmp-larr").replace(/→/g,"tmp-rarr"));
-};
-
+}
 </script>
 <style>
 body{font-family:arial; width:9000px}
 #a,#f{width:700px;height:500px;resize:both;font-size:11px}
 .hidden{display:none}
-textarea{width:120px;height:200px;transition:all .5s .1s;font-size:9px}
+textarea{width:120px;height:200px;transition:all .5s .1s}
 textarea:focus{width:400px;transition:all .5s;font-size:12px}
 </style>
