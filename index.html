@@ -21,7 +21,7 @@
 <iframe id=f></iframe>
 </div>
 <script>
-plus=function(e){e.parentNode.outerHTML+='<th><textarea onkeyup=update(this)>Hi</textarea><br><button onclick=minus(this)>X</button>'+e.parentNode.outerHTML}
+plus=function(e){e.parentNode.outerHTML+='<th><textarea onkeyup=upd(this)>Hi</textarea><br><button onclick=minus(this)>X</button>'+e.parentNode.outerHTML}
 minus=function(e){e.parentNode.nextSibling.remove();e.parentNode.remove()}
 upd=function(e){e.innerHTML=e.value.replace(/&lt;/g,"&amp;lt;").replace(/&amp;/g,"&amp;amp;")}
 refresh=function(){
